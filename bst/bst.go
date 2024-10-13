@@ -6,6 +6,7 @@ func (bst *BST[T]) Insert(value T) {
 	}
 	new := &Node[T]{value: value}
 	if bst.root == nil {
+		new.color = Black
 		bst.root = new
 		return
 	}

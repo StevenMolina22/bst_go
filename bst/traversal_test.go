@@ -13,6 +13,26 @@ func TestBST_InOrder(t *testing.T) {
 	})
 }
 
+func TestBST_PreOrder(t *testing.T) {
+	bst := NewBST(intCmp)
+	bst.Insert(1)
+	bst.Insert(2)
+	bst.Insert(3)
+	bst.PreOrder(func(value int) {
+		t.Log(value)
+	})
+}
+
+func TestBST_PostOrder(t *testing.T) {
+	bst := NewBST(intCmp)
+	bst.Insert(1)
+	bst.Insert(2)
+	bst.Insert(3)
+	bst.PostOrder(func(value int) {
+		t.Log(value)
+	})
+}
+
 func TestBST_Traversals(t *testing.T) {
 	bst := NewBST(intCmp)
 	values := []int{3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5}

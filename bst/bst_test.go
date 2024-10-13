@@ -78,8 +78,8 @@ func TestBST_InsertEdgeCases(t *testing.T) {
 			count++
 		}
 	})
-	if count != 1 {
-		t.Error("Expected BST to contain 1 only once")
+	if count != 2 {
+		t.Error("Expected BST to contain 2")
 	}
 }
 

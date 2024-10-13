@@ -7,7 +7,6 @@ import (
 )
 
 func main() {
-
 	// Create a new BST
 	bst := bst.NewBST(func(a, b int) int {
 		return a - b
@@ -43,6 +42,7 @@ func main() {
 	}
 
 	// Perform in-order traversal
+	// expected: 1 2 3 3 4 5 5 6
 	fmt.Println("In-order traversal:")
 	bst.InOrder(func(value int) {
 		fmt.Print(value, " ")

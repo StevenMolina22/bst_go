@@ -2,6 +2,16 @@
 
 This project implements a generic Binary Search Tree (BST) in Go, providing basic operations such as insertion, deletion, search, and traversal. The project also includes unit tests to ensure the correctness of the implementation.
 
+```mermaid
+graph TD
+    A[10] --> B[5]
+    A --> C[15]
+    B --> D[2]
+    B --> E[7]
+    C --> F[12]
+    C --> G[20]
+```
+
 ## Table of Contents
 
 - [Installation](#installation)

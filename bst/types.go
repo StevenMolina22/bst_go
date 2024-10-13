@@ -10,15 +10,24 @@ type BSTInterface[T comparable] interface {
 	InOrder(f func(T))
 	PreOrder(f func(T))
 	PostOrder(f func(T))
+
 	InOrderVec() []T
 	PreOrderVec() []T
 	PostOrderVec() []T
 }
 
+type Color int
+
+const (
+	Red Color = iota
+	Black
+)
+
 type Node[T comparable] struct {
 	value T
 	left  *Node[T]
 	right *Node[T]
+	color Color
 }
 
 type CmpFn[T comparable] func(a, b T) int
