@@ -1,6 +1,8 @@
-package bst
+package avlbst
 
-type BSTInterface[T comparable] interface {
+import "cmp"
+
+type BSTInterface[T cmp.Ordered] interface {
 	Insert(value T)
 	Remove(value T) (ok bool)
 	Search(value T) (T, ok bool)
@@ -16,20 +18,18 @@ type BSTInterface[T comparable] interface {
 	PostOrderVec() []T
 }
 
-type Node[T comparable] struct {
+type Node[T cmp.Ordered] struct {
 	value  T
 	parent *Node[T]
 	left   *Node[T]
 	right  *Node[T]
+	height uint
 }
 
-type CmpFn[T comparable] func(a, b T) int
-
-type BST[T comparable] struct {
+type BST[T cmp.Ordered] struct {
 	root *Node[T]
-	cmp  CmpFn[T]
 }
 
-func NewBST[T comparable](f CmpFn[T]) *BST[T] {
-	return &BST[T]{root: nil, cmp: f}
+func NewBST[T cmp.Ordered]() *BST[T] {
+	return &BST[T]{root: nil}
 }

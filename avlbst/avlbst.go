@@ -1,4 +1,4 @@
-package bst
+package avlbst
 
 func (bst *BST[T]) Insert(value T) {
 	if bst == nil {
@@ -16,7 +16,7 @@ func (bst *BST[T]) insert(node *Node[T], newNode *Node[T]) {
 	if node == nil {
 		return
 	}
-	if bst.cmp(newNode.value, node.value) > 0 {
+	if newNode.value > node.value {
 		if node.right == nil {
 			node.right = newNode
 			return
@@ -45,11 +45,11 @@ func (bst *BST[T]) remove(node *Node[T], key T) (*Node[T], bool) {
 		return nil, false
 	}
 
-	if bst.cmp(key, node.value) > 0 { // key on right subtree
+	if key > node.value { // key on right subtree
 		var removed bool
 		node.right, removed = bst.remove(node.right, key)
 		return node, removed
-	} else if bst.cmp(key, node.value) < 0 { // key on left subtree
+	} else if key < node.value { // key on left subtree
 		var removed bool
 		node.left, removed = bst.remove(node.left, key)
 		return node, removed
@@ -92,7 +92,7 @@ func (bst *BST[T]) search(node *Node[T], key T) (T, bool) {
 		return node.value, true
 	}
 	// recursive cases
-	if bst.cmp(key, node.value) > 0 {
+	if key > node.value {
 		return bst.search(node.right, key)
 	} else {
 		return bst.search(node.left, key)
