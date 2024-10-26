@@ -1,4 +1,4 @@
-package bst
+package avlbst
 
 func (bst *BST[T]) InOrder(f func(T)) {
 	if bst == nil {

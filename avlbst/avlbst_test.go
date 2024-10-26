@@ -1,25 +1,16 @@
-package bst
+package avlbst
 
 import "testing"
 
-func intCmp(a, b int) int {
-	if a < b {
-		return -1
-	} else if a > b {
-		return 1
-	}
-	return 0
-}
-
 func TestBST_Search(t *testing.T) {
-	bst := NewBST(intCmp)
+	bst := NewBST[int]()
 	if _, ok := bst.Search(1); ok {
 		t.Error("Expected empty BST to return false")
 	}
 }
 
 func TestBST_Insert(t *testing.T) {
-	bst := NewBST(intCmp)
+	bst := NewBST[int]()
 	bst.Insert(1)
 	if _, ok := bst.Search(1); !ok {
 		t.Error("Expected BST to contain 1")
@@ -27,7 +18,7 @@ func TestBST_Insert(t *testing.T) {
 }
 
 func TestBST_Remove(t *testing.T) {
-	bst := NewBST(intCmp)
+	bst := NewBST[int]()
 	bst.Insert(1)
 	bst.Remove(0)
 	if _, ok := bst.Search(1); !ok {
@@ -36,7 +27,7 @@ func TestBST_Remove(t *testing.T) {
 }
 
 func TestBST_InsertMultiple(t *testing.T) {
-	bst := NewBST(intCmp)
+	bst := NewBST[int]()
 	values := []int{3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5}
 	for _, v := range values {
 		bst.Insert(v)
@@ -49,7 +40,7 @@ func TestBST_InsertMultiple(t *testing.T) {
 }
 
 func TestBST_InsertEdgeCases(t *testing.T) {
-	bst := NewBST(intCmp)
+	bst := NewBST[int]()
 
 	// Test inserting a very large number
 	bst.Insert(1<<31 - 1)
@@ -84,7 +75,7 @@ func TestBST_InsertEdgeCases(t *testing.T) {
 }
 
 func TestBST_RemoveExisting(t *testing.T) {
-	bst := NewBST(intCmp)
+	bst := NewBST[int]()
 	bst.Insert(1)
 	bst.Insert(2)
 	bst.Insert(3)
@@ -102,7 +93,7 @@ func TestBST_RemoveExisting(t *testing.T) {
 }
 
 func TestBST_Size(t *testing.T) {
-	bst := NewBST(intCmp)
+	bst := NewBST[int]()
 	if bst.Size() != 0 {
 		t.Error("Expected size of empty BST to be 0")
 	}
@@ -129,7 +120,7 @@ func TestBST_Size(t *testing.T) {
 }
 
 func TestBST_Height(t *testing.T) {
-	bst := NewBST(intCmp)
+	bst := NewBST[int]()
 	if bst.Height() != 0 {
 		t.Error("Expected height of empty BST to be 0")
 	}
